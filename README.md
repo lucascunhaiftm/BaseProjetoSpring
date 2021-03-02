@@ -36,3 +36,17 @@ Se tudo estiver certo, o Maven irá criar um executável jar na pasta "target".
 ### Notas
 
 * No caso de fechar o container, a versão mais atualizada do .jar não estára na imagem do container. Pra atualizar, basta refazer o processo acima excluindo e recriando a imagem.
+
+Preciso remover a anotação na classe AppBaseApplicaiton.ja
+
+Com as novas classes agora podemos fazer uso do JPA. Mas nesse caso precisaremos ter um serviço de banco de dados, no nosso caso será Mysql. 
+ALém de toda a configuração padrão que fizemos, agora vamos subir dois containers.
+
+* Criaremos a imagem como de cosutme. Mas agora precisamos subir o container com mysql primeiro. 
+* Para isso usaremos docker pull mysql:5.6 . COm isso teremos a imagem do mysql na máquina.
+* Feito isso agora subiremos o container do docker com mysql:  docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=bancoapp -e MYSQL_USER=user -e MYSQL_PASSWORD=password -d mysql:5.6 
+As configurações são asm mesmas do propreties
+*Agora basta subir a aplicação mas precisaremos ligar o container da aplicação com o mysql, pois estamos em 2 containers diferentes
+ docker run -p 8081:8080 --link mysql-container:mysql minhaimagem
+ 
+ 
