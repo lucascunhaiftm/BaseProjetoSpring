@@ -36,4 +36,3 @@ Se tudo estiver certo, o Maven irá criar um executável jar na pasta "target".
 ### Notas
 
 * No caso de fechar o container, a versão mais atualizada do .jar não estára na imagem do container. Pra atualizar, basta refazer o processo acima excluindo e recriando a imagem.
-* 
